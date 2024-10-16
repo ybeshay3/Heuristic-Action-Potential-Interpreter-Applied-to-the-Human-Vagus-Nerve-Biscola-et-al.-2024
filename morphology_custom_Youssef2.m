@@ -1,8 +1,11 @@
+% Copyright Purdue University/Matthew P Ward/Youssef Beshay (2024)
+% All code is made available using the following license: GNU General Public License v2.0. 
+% If you use any part of this code for any purpose, you must include a copy of the original source code, license and authors with the derivative code or cite the original code in any manuscript or research product produced:
+% N. P. Biscola et al., “Laterality, Sexual Dimorphism, and Heterogeneity of the Human Vagal Projectome Shape Neuromodulation to Vagus Nerve Stimulation,” Communications Biology, 2024. 
+
 function [idx1, idx2, idx3, idx4, idx5] = morphology_custom_Youssef2(lim_one, lim_two, lim_three, lim_four, diameters)
-% Summary of this function goes here
-% x and y are the x and y centroids respectively for all 5 groups. The diameters are the
-% diameters in each group (1-5). idx (1-5) corresponds to the row number where a nerve
-% fiber belongs to a certain diameter group. 
+% This function sorts the fibers/axons into groups (1-5) based on diameters. 
+% idx (1-5) corresponds to the row number where a nerve fiber belongs to a certain diameter group. 
 
 %first limit
 logical_vector = diameters < lim_one;

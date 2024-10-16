@@ -1,3 +1,9 @@
+% Copyright Purdue University/Matthew P Ward/Youssef Beshay (2024)
+% Disclaimer: Functions may change with evolving relationships between fiber/axon properties and conduction velocities
+% All code is made available using the following license: GNU General Public License v2.0. 
+% If you use any part of this code for any purpose, you must include a copy of the original source code, license and authors with the derivative code or cite the original code in any manuscript or research product produced:
+% N. P. Biscola et al., “Laterality, Sexual Dimorphism, and Heterogeneity of the Human Vagal Projectome Shape Neuromodulation to Vagus Nerve Stimulation,” Communications Biology, 2024. 
+
 function [data1] = AP_calculations(conduction, cuff, axon_diameters, axon_number, target_diameter, myelin_status)
         
 %         global data1
@@ -17,17 +23,15 @@ function [data1] = AP_calculations(conduction, cuff, axon_diameters, axon_number
         
         if myelin_status == 1
             data1.spMODEL = load('SingleSpike_DA12.txt'); %used for myelinated fiber 
-            % data1.spMODEL = data1.spMODEL/rms(data1.spMODEL); % YOUSSEF BESHAY- NORMALIZE THE UNITS 2/24
-            data1.spMODEL = ((data1.spMODEL*-1)/1000)';   %Invert to match recording configuration with noninv amp input seeing traveling negative wave first
-            %divide by a 1000 added by Youssef on June 4, 2024
-            % data1.spMODEL = data1.spMODEL/1e3; %comment this
+            data1.spMODEL = data1.spMODEL'/rms(data1.spMODEL); % YOUSSEF BESHAY- NORMALIZE THE UNITS 2/24
+            data1.spMODEL = data1.spMODEL*-1;   %Invert to match recording configuration with noninv amp input seeing traveling negative wave first
+            % from AP_calculations_RMS
             data1.AxVel = data1.AxD .* 6.02; %check fiber vs axon diameter!! commented on June 5, 2024
-            % data1.AxVel = data1.AxD .* 8; %check fiber vs axon diameter!!
 
 
         else 
-            data1.spMODEL = load('tVNS3_Cf_template_v2_VolleyOnly_25kHz_29June19.txt')*1000*1000;  %29June19 --> from tVNS3 (volley and tail)
-            % data1.spMODEL = data1.spMODEL/ rms(data1.spMODEL)*1e33; %YOUSSEF BESHAY - NORMALIZE THE UNITS 2/24
+            data1.spMODEL = load('tVNS3_Cf_template_v2_VolleyOnly_25kHz_29June19.txt');%*1000*1000;  %29June19 --> from tVNS3 (volley and tail)
+            data1.spMODEL = data1.spMODEL/ rms(data1.spMODEL);%*1e33; %YOUSSEF BESHAY - NORMALIZE THE UNITS 2/24
             data1.AxVel = data1.AxD.*sqrt(pi); %axon velocity for unmyelinated fibers
 
         end 

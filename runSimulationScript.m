@@ -1,3 +1,11 @@
+% Copyright Purdue University/Matthew P Ward/Youssef Beshay (2024)
+% All code is made available using the following license: GNU General Public License v2.0. 
+% If you use any part of this code for any purpose, you must include a copy of the original source code, license and authors with the derivative code or cite the original code in any manuscript or research product produced:
+% N. P. Biscola et al., “Laterality, Sexual Dimorphism, and Heterogeneity of the Human Vagal Projectome Shape Neuromodulation to Vagus Nerve Stimulation,” Communications Biology, 2024. 
+
+%% This script is used to produce Figures 6 and 9 of the manuscript. 
+% Note that minor modifications may have been made for representational purposes such as between the histograms to show the 
+% count of fibers/axons on top of each histogram bin and to change the Y limits in the histograms.
 clc;clear;close all;
 %% Start here - User Inputs
 myelination = 0; %myelinated = 1, unmyelinated = 0
@@ -39,8 +47,7 @@ if logical(myelination)
     fascicle7Diameters = fascicle7Data(:,diameterColumnSAE);
     diameterMaximum = [max(fascicle2Diameters), max(fascicle3Diameters), max(fascicle7Diameters)];
     diameterMinimum = [min(fascicle2Diameters), min(fascicle3Diameters), min(fascicle7Diameters)];
-    % colorsRGB = [255 255 0; 255 0 255; 0 255 0; 0 255 255; 255 0 0]./255.*0.7;
-    colorsRGB = [230 25 75; 60 180 75; 220 190 255; 0 130 200; 245 130 48]./255;
+    colorsRGB = [255 255 0; 255 0 255; 0 255 0; 0 255 255; 255 0 0]./255.*0.7;
 
 else 
     diameterColumnSAE = 9;
@@ -52,8 +59,7 @@ else
     fascicle7Diameters = fascicle7Data(:,diameterColumnSAE);
     diameterMaximum = [max(fascicle2Diameters), max(fascicle3Diameters), max(fascicle7Diameters)];
     diameterMinimum = [min(fascicle2Diameters), min(fascicle3Diameters), min(fascicle7Diameters)];
-    % colorsRGB = [255 255 0; 255 0 255; 0 255 0; 0 255 255; 255 0 0]./255;
-    colorsRGB = [230 25 75; 60 180 75; 220 190 255; 0 130 200; 245 130 48]./255;
+    colorsRGB = [255 255 0; 255 0 255; 0 255 0; 0 255 255; 255 0 0]./255;
 
 end
 
@@ -310,7 +316,7 @@ xlabel('Time (ms)', 'FontSize',35,"FontName",'Arial','FontWeight','bold');
 % CY: 4/10/2023, changed from uV to arbitrary units
 ylabel('V_p_r_e_d (\muV)', 'FontSize',35,"FontName",'Arial','FontWeight','bold');
 if myelination
-    xlim([0 5]); %FOR MYELINATED FIBERS REDUCE THE X RANGE; eliminates the automatic zooming
+    xlim([0 3]); %FOR MYELINATED FIBERS REDUCE THE X RANGE; eliminates the automatic zooming
 else
     xlim([0 80]);
 end
@@ -358,7 +364,7 @@ xloc = E(1:end-1)+diff(E)/2;
 xloc(y == 0) = [];
 y(y == 0) = [];
 
-% may modify the Y location of the text (displaying the number of fibers/axons in a group). location adjusted based on the
+% may modify the X and Y location of the text (displaying the number of fibers/axons in a group). location adjusted based on the
 % number of fibers/axons in the group
 for z = 1:length(y)
     if y(z)>1000

@@ -1,17 +1,12 @@
+% Copyright Purdue University/Matthew P Ward/Youssef Beshay (2024)
+% Disclaimer: Functions may change with evolving relationships between fiber/axon properties and conduction velocities
+% All code is made available using the following license: GNU General Public License v2.0. 
+% If you use any part of this code for any purpose, you must include a copy of the original source code, license and authors with the derivative code or cite the original code in any manuscript or research product produced:
+% N. P. Biscola et al., “Laterality, Sexual Dimorphism, and Heterogeneity of the Human Vagal Projectome Shape Neuromodulation to Vagus Nerve Stimulation,” Communications Biology, 2024. 
+
 function [SpikeModelElec1, SpikeModelElec2, SpikeModelDifferential] = vElectRx_FiberSpikeModel_GasserReconstruction(Fs, AxD, AxNum, cTIME, cTIME2, spAMP, spDUR, spMODEL, RecDUR, numCol)
 
-Fs_ms = Fs/1000;                   %Comvert to 25 samples per msec
-
-%% Find the volley
-volleyIDX = find(spMODEL == min(spMODEL));
-timeMSdelay = volleyIDX/Fs*1e3;
-
-%% Variable Declarations:
-% cTIME = cTIME - 1.96;  %For C fiber volley (4June24) TEST
-% cTIME2 = cTIME2 - 1.96;  %For C fiber volley (4June24) TEST
-cTIME = cTIME + timeMSdelay;  %For C fiber volley (4June24) TEST
-cTIME2 = cTIME2 + timeMSdelay;  %For C fiber volley (4June24) TEST
-
+Fs_ms = Fs/1000;                   %Convert to 25 samples per msec
 
 INITIAL_DELAY = cTIME;      %(msec) Initial delay before spike placement
 % INITIAL_DELAY = cTIME - 1.96;      %TEST (3JUNE24) - Offset delay for C fiber SFAP template start to peak of SFAP 
