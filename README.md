@@ -1,9 +1,9 @@
 # Biscola-et-al.-2024
- This contains the codes for the HAPI figures in the manuscript submitted to Communications Biology. 
+ This repository contains key components of the Purdue Heuristic Action Potential Interpreter (HAPI) code used to generate the HAPI figures in the Communications Biology manuscript referenced below. The Heuristic Action Potential Interpreter code, including all functions and methods of visualizion produced with the code, were developed in the Purdue BioCom Laboratory (PI/Director: Matthew P. Ward, PhD) at Purdue University (West Lafayette, IN).
 
 Laterality, Sexual Dimorphism, and Heterogeneity of the Human Vagal Projectome Shape Neuromodulation to Vagus Nerve Stimulation 
 
-Natalia P. Biscola1, Petra M. Bartmeyer1, Youssef Beshay2, Esther Stern1, Plamen V. Mihaylov3, Terry L. Powley4, Matthew P. Ward2,5, Leif A Havton1,6,7*
+Natalia P. Biscola1, Petra M. Bartmeyer1, Youssef Beshay2, Esther Stern1, Plamen V. Mihaylov3, Terry L. Powley4, Matthew P. Ward2,5, Leif A. Havton1,6,7*
 
 1Department of Neurology, Icahn School of Medicine at Mount Sinai, New York, NY
 2Weldon School of Biomedical Engineering, Purdue University, West Lafayette, IN
